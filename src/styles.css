@@ -1,10 +1,18 @@
 * {
   box-sizing: border-box;
 }
+#root {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+}
 body {
   margin: 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   color: #1c1c1c;
+  display: flex;
+  flex-direction: column;
 }
 button {
   cursor: pointer;
@@ -18,6 +26,7 @@ header {
   background-color: rgba(0, 0, 0, 0.04);
   width: 100%;
   padding: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 /* header-search  */
 .search-div {
@@ -65,7 +74,7 @@ search-div {
 .sort-div {
   position: relative;
 }
-/* header-sort-otions-modal */
+/* header-sort-options-modal */
 .sort-option-card {
   margin-top: 0.5rem;
   position: fixed;
@@ -107,4 +116,55 @@ search-div {
 }
 .sort-options button:hover {
   background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* main section data-list-container */
+main {
+  flex-grow: 1;
+}
+.data-list-container {
+  width: 50%;
+  border-right: 2px solid rgba(0, 0, 0, 0.15);
+}
+.episodes {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.episodes p {
+  text-align: left;
+}
+.episodes p:nth-child(3) {
+  margin-left: auto;
+  margin-right: 0;
+}
+.episodes p:nth-child(odd) {
+  color: rgba(28, 28, 28, 0.75);
+}
+.episodes p:nth-child(1) {
+  font-size: smaller;
+}
+.episodes:last-child {
+  border-bottom: none;
+}
+.episodes:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+.description-container {
+  width: 50%;
+  padding: 1rem;
+}
+.description-container-empty {
+  margin: auto;
+  text-align: center;
+}
+
+/* media queries */
+@media (min-width: 800px) {
+  main {
+    display: flex;
+  }
 }
