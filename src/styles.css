@@ -9,7 +9,7 @@
 }
 body {
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: Lato;
   color: #1c1c1c;
   display: flex;
   flex-direction: column;
@@ -17,6 +17,7 @@ body {
 button {
   cursor: pointer;
   color: #1c1c1c;
+  font-family: Lato;
 }
 /* header */
 
@@ -121,6 +122,7 @@ search-div {
 /* main section data-list-container */
 main {
   flex-grow: 1;
+  display: flex;
 }
 .data-list-container {
   width: 50%;
@@ -153,18 +155,47 @@ main {
 .episodes:hover {
   background-color: rgba(0, 0, 0, 0.04);
 }
+/* description showing container */
 .description-container {
   width: 50%;
   padding: 1rem;
 }
+
 .description-container-empty {
   margin: auto;
   text-align: center;
 }
+.details-body {
+  line-height: 2rem;
+}
+/* loader */
+@keyframes rotateAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.loader {
+  width: 100px;
+  height: 100px;
+  margin: auto;
+  border: 18px dotted #1c1c1c;
+  border-radius: 100%;
+  animation: rotateAnimation 6s ease infinite; /* Adjust duration and timing function as needed */
+}
 
 /* media queries */
-@media (min-width: 800px) {
+@media (max-width: 1000px) {
   main {
-    display: flex;
+    flex-direction: column;
+  }
+  .data-list-container {
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  }
+  .description-container {
+    width: 100%;
   }
 }

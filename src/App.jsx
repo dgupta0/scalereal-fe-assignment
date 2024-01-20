@@ -9,6 +9,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [showDetails, setShowDetails] = useState([]);
+  const [searchData, setSearchData] = useState([]);
 
   useEffect(() => {
     async function getData() {
@@ -19,24 +20,33 @@ function App() {
       } catch (error) {
         console.log(error, "error from api");
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     }
     getData();
   }, []);
-  console.log(data);
 
-  function showDescription(id) {
+  const showDescription = (id) => {
     const episode = data.find((el) => el.episode_id === id);
     console.log(episode);
     setShowDetails([
       <div key={episode.episode_id} className="episode-desc">
         <h3>{episode.title}</h3>
-        <p>{episode.opening_crawl}</p>
+        <p className="details-body">{episode.opening_crawl}</p>
         <p>Directed By: {episode.director}</p>
       </div>,
     ]);
-  }
+  };
+  const handleBySearch = (e) => {
+    setSearchData(data);
+    let val = e.target.value;
+    setSearchVal(val);
+    console.log(searchVal);
+    const filteredData = data.filter((el) =>
+      el.title.toLowerCase().includes(val.toLowerCase())
+    );
+    setSearchData(filteredData);
+  };
   const handleSortByEpisodes = () => {
     setData((prevData) => prevData.sort((a, b) => a.episode_id - b.episode_id));
     setOpenSort(false);
@@ -50,7 +60,8 @@ function App() {
     setOpenSort(false);
   };
   console.log("data", data);
-  const dataToRender = data.map((el) => (
+  const dataToUse = searchVal ? searchData : data;
+  const dataToRender = dataToUse.map((el) => (
     <div
       key={el.episode_id}
       onClick={() => showDescription(el.episode_id)}
@@ -97,22 +108,28 @@ function App() {
           <input
             type="search"
             name="search"
-            onChange={(e) => setSearchVal(e.target.value)}
+            onChange={(e) => handleBySearch(e)}
           />
         </div>
       </header>
-      <main>
-        <section className="data-list-container">{dataToRender}</section>
-        <section
-          className={
-            showDetails.length
-              ? "description-container"
-              : "description-container-empty"
-          }
-        >
-          {showDetails.length ? showDetails : "No Movie Selected"}
-        </section>
-      </main>
+      {isLoading ? (
+        <main>
+          <div className="loader"></div>
+        </main>
+      ) : (
+        <main>
+          <section className="data-list-container">{dataToRender}</section>
+          <section
+            className={
+              showDetails.length
+                ? "description-container"
+                : "description-container-empty"
+            }
+          >
+            {showDetails.length ? showDetails : "No Movie Selected"}
+          </section>
+        </main>
+      )}
     </>
   );
 }
