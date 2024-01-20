@@ -9,6 +9,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
   const [showDetails, setShowDetails] = useState([]);
+
   useEffect(() => {
     async function getData() {
       try {
@@ -36,6 +37,19 @@ function App() {
       </div>,
     ]);
   }
+  const handleSortByEpisodes = () => {
+    setData((prevData) => prevData.sort((a, b) => a.episode_id - b.episode_id));
+    setOpenSort(false);
+  };
+  const handleSortByDate = () => {
+    setData((prevData) =>
+      prevData.sort(
+        (a, b) => new Date(a.release_date) - new Date(b.release_date)
+      )
+    );
+    setOpenSort(false);
+  };
+  console.log("data", data);
   const dataToRender = data.map((el) => (
     <div
       key={el.episode_id}
@@ -72,8 +86,8 @@ function App() {
                 </button>
               </div>
               <div className="sort-options">
-                <button>Episodes</button>
-                <button>Year</button>
+                <button onClick={handleSortByEpisodes}>Episodes</button>
+                <button onClick={handleSortByDate}>Year</button>
               </div>
             </div>
           )}
