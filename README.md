@@ -1,5 +1,3 @@
-# finding-falcon-geektrust-crio Project
-
 ##### Running the project with vite
 
 1. Open your teminal
