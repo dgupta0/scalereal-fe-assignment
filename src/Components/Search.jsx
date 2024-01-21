@@ -1,16 +1,16 @@
 import searchIcon from "../assets/search.png";
 import PropTypes from "prop-types";
 
-export const Search = ({ setqueryData, setquery, query, data }) => {
+export const Search = ({ setQueryResult, setQuery, query, data }) => {
   const handleSearch = (e) => {
-    setqueryData(data);
+    setQueryResult(data);
     let val = e.target.value;
-    setquery(val);
+    setQuery(val);
     console.log(query);
     const filteredData = data.filter((el) =>
       el.title.toLowerCase().includes(val.toLowerCase())
     );
-    setqueryData(filteredData);
+    setQueryResult(filteredData);
   };
   return (
     <div className="search-div">
@@ -26,8 +26,8 @@ export const Search = ({ setqueryData, setquery, query, data }) => {
 };
 
 Search.propTypes = {
-  setqueryData: PropTypes.func.isRequired,
-  setquery: PropTypes.func.isRequired,
+  setQueryResult: PropTypes.func.isRequired,
+  setQuery: PropTypes.func.isRequired,
   query: PropTypes.string,
   data: PropTypes.array.isRequired,
 };

@@ -3,20 +3,20 @@ import { Search } from "./Search";
 import { Sort } from "./Sort";
 
 export const Header = ({
-  setqueryData,
-  setquery,
+  setQueryResult,
+  setQuery,
   query,
   data,
-  queryData,
+  queryResult,
   setData,
 }) => {
   return (
     <header>
       <Sort data={data} setData={setData} />
       <Search
-        queryData={queryData}
-        setqueryData={setqueryData}
-        setquery={setquery}
+        queryResult={queryResult}
+        setQueryResult={setQueryResult}
+        setQuery={setQuery}
         query={query}
         data={data}
         setData={setData}
@@ -26,10 +26,10 @@ export const Header = ({
 };
 
 Header.propTypes = {
-  setqueryData: PropTypes.func.isRequired,
-  setquery: PropTypes.func.isRequired,
+  setQueryResult: PropTypes.func.isRequired,
+  setQuery: PropTypes.func.isRequired,
   query: PropTypes.string,
   data: PropTypes.array.isRequired,
   setData: PropTypes.func.isRequired,
-  queryData: PropTypes.array.isRequired,
+  queryResult: PropTypes.array.isRequired,
 };

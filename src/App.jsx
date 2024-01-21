@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import { Header } from "./Components/Header";
 import { Content } from "./Components/Content";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-  const [query, setquery] = useState("");
-  const [queryData, setqueryData] = useState([]);
+  const [query, setQuery] = useState("");
+  const [queryResult, setQueryResult] = useState([]);
 
   useEffect(() => {
     async function getData() {
@@ -25,13 +24,13 @@ function App() {
     getData();
   }, []);
 
-  const dataToUse = query ? queryData : data;
+  const dataToUse = query ? queryResult : data;
   return (
     <>
       <Header
-        queryData={queryData}
-        setqueryData={setqueryData}
-        setquery={setquery}
+        queryResult={queryResult}
+        setQueryResult={setQueryResult}
+        setQuery={setQuery}
         data={data}
         setData={setData}
         query={query}

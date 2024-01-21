@@ -6,6 +6,7 @@ export const Collection = ({ dataToUse, setselectedMovie }) => {
     const episode = dataToUse.find((el) => el.episode_id === id);
     setselectedMovie(episode);
   };
+
   const renderData = dataToUse.map((el) => (
     <div
       key={el.episode_id}
@@ -21,6 +22,7 @@ export const Collection = ({ dataToUse, setselectedMovie }) => {
   ));
   return <section className="data-list-container">{renderData}</section>;
 };
+
 Collection.propTypes = {
   dataToUse: PropTypes.array.isRequired,
   setselectedMovie: PropTypes.func.isRequired,
