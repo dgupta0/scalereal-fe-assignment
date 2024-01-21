@@ -89,12 +89,13 @@ search-div {
   justify-content: space-between;
   align-items: center;
   padding: 0 0.5rem;
+
+  border-bottom: none;
 }
 .close-btn {
   border: none;
   background-color: white;
-  font-size: 1.25rem;
-  font-weight: lighter;
+  font-size: 1.5rem;
 }
 .sort-options {
   display: flex;
@@ -109,7 +110,8 @@ search-div {
   border-left: none;
   border-right: none;
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   font-size: 0.9rem;
 }
 .sort-options button:nth-child(1) {
@@ -119,7 +121,7 @@ search-div {
   background-color: rgba(0, 0, 0, 0.04);
 }
 
-/* main section data-list-container */
+/* main section-> data-list-container */
 main {
   flex-grow: 1;
   display: flex;
@@ -130,7 +132,6 @@ main {
 }
 .episodes {
   display: flex;
-  gap: 2rem;
   align-items: center;
   padding: 0 1rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -148,6 +149,7 @@ main {
 }
 .episodes p:nth-child(1) {
   font-size: smaller;
+  margin-right: 1rem;
 }
 .episodes:last-child {
   border-bottom: none;
