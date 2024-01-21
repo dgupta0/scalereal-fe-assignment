@@ -11,7 +11,7 @@
 6. Run `npm install`
 7. Run the project `npm run dev`
 8. A link will be seen after `local:` Copy it and past it in the browser.
-9. click on the link- `https://scalereal-assignment.netlify.app/` for project demo.
+9. click on the link- `https://scalereal-assignment-fe.netlify.app/` for project demo.
 
 # React + Vite
 
